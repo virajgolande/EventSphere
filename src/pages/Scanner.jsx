@@ -7,6 +7,7 @@ const Scanner = () => {
 
   const scannerRef = useRef(null);
   const startedRef = useRef(false);
+  const scannedRef = useRef(false);
 
   useEffect(() => {
     if (startedRef.current) return;
@@ -35,20 +36,26 @@ const Scanner = () => {
             },
           },
           async (decodedText) => {
-  const ticketId = decodedText.split("/").pop();
+            // Prevent duplicate scans
+            if (scannedRef.current) return;
+            scannedRef.current = true;
 
-  try {
-    await html5QrCode.stop();
-    await html5QrCode.clear();
-  } catch (error) {
-    console.log(error);
-  }
+            const ticketId = decodedText.split("/").pop();
 
-  // Small delay before navigation
-  setTimeout(() => {
-    navigate(`/verify/${ticketId}`);
-  }, 300);
-},
+            try {
+              if (html5QrCode.isScanning) {
+                await html5QrCode.stop();
+              }
+
+              await html5QrCode.clear();
+            } catch (error) {
+              console.log(error);
+            }
+
+            navigate(`/verify/${ticketId}`, {
+              replace: true,
+            });
+          },
           () => {}
         );
       } catch (err) {
@@ -60,7 +67,9 @@ const Scanner = () => {
     startScanner();
 
     return () => {
-      if (scannerRef.current) {
+      // Only stop the scanner if the page is closed
+      // before a QR code has been scanned.
+      if (!scannedRef.current && scannerRef.current) {
         scannerRef.current
           .stop()
           .catch(() => {})
@@ -82,7 +91,7 @@ const Scanner = () => {
         className="w-full max-w-md bg-white rounded-2xl overflow-hidden"
       />
 
-      <p className="text-gray-400 mt-6">
+      <p className="text-gray-400 mt-6 text-center">
         Point your camera at the attendee's QR code.
       </p>
     </div>
