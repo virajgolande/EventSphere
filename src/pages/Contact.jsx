@@ -65,7 +65,7 @@ const Contact = () => {
               </h3>
 
               <p className="text-gray-400">
-                support@eventsphere.com
+                virajgolande30@gmail.com
               </p>
             </div>
 
@@ -75,7 +75,7 @@ const Contact = () => {
               </h3>
 
               <p className="text-gray-400">
-                +91 9876543210
+                +91 9730316235
               </p>
             </div>
 
