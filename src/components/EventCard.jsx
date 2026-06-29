@@ -24,6 +24,9 @@ const EventCard = ({ event, onTicketBooked }) => {
     }
 
     try {
+
+      // console.log(user);
+      
       const ticketId = `TKT-${Date.now()}`;
 
       // Create Ticket
