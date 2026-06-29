@@ -28,10 +28,10 @@ const Contact = () => {
         message: "",
       });
     } catch (error) {
-      console.log(error);
+  console.error(error);
 
-      alert("Failed To Send Message");
-    } finally {
+  alert(error?.message || JSON.stringify(error));
+} finally {
       setLoading(false);
     }
   };
