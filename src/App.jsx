@@ -14,20 +14,20 @@ import AdminAddEvent from "./pages/AdminAddEvent";
 import MyTickets from "./pages/MyTickets";
 import UserProfile from "./pages/UserProfile";
 import Scanner from "./pages/Scanner";
+import LandingPage from "./pages/LandingPage";
 
 const App = () => {
   return (
     <>
       <Navbar />
 
-      <div className="pt-20 min-h-screen bg-black overflow-x-hidden">
+      <div className="min-h-screen bg-black overflow-x-hidden">
 
         <Routes>
 
           {/* Home */}
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<LandingPage />} />
           {/* Events */}
           <Route path="/events" element={<Event />} />
 

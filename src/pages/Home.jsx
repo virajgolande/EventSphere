@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   FaCalendarAlt,
   FaQrcode,
@@ -22,7 +21,7 @@ const Home = () => {
 
         <div className="relative z-10 flex flex-col justify-center items-center min-h-screen text-center px-6">
 
-          <span className="bg-pink-600/20 border border-pink-500/30 text-pink-400 px-5 py-2 rounded-full mb-6">
+          <span className="bg-white/[0.04] backdrop-blur-sm border border-white/10 text-pink-400 px-5 py-2 rounded-full mb-6 text-sm">
             🎟 Welcome To EventSphere
           </span>
 
@@ -40,19 +39,13 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row gap-5 mt-10">
 
-            <Link
-              to="/events"
-              className="bg-pink-600 hover:bg-pink-700 px-8 py-4 rounded-full font-semibold transition"
-            >
+            <a href="#events" className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg shadow-pink-600/20">
               Explore Events
-            </Link>
+            </a>
 
-            <Link
-              to="/contact"
-              className="border border-white/20 hover:bg-white/10 px-8 py-4 rounded-full transition"
-            >
+            <a href="#contact" className="border border-white/15 hover:border-white/30 hover:bg-white/5 px-8 py-4 rounded-full transition">
               Contact Us
-            </Link>
+            </a>
 
           </div>
 
@@ -70,11 +63,13 @@ const Home = () => {
             Why Choose EventSphere?
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
 
-            <div className="bg-white/5 rounded-3xl p-8 border border-white/10 hover:border-pink-500 transition">
+            <div className="rounded-3xl bg-white/[0.03] p-8 border border-white/10 hover:border-pink-500/40 hover:bg-white/[0.05] transition-colors duration-300">
 
-              <FaCalendarAlt className="text-5xl text-pink-500 mb-5" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-600/20 to-purple-600/20 border border-pink-500/20 flex items-center justify-center mb-6">
+                <FaCalendarAlt className="text-2xl text-pink-400" />
+              </div>
 
               <h3 className="text-2xl font-bold">
                 Easy Booking
@@ -86,9 +81,11 @@ const Home = () => {
 
             </div>
 
-            <div className="bg-white/5 rounded-3xl p-8 border border-white/10 hover:border-pink-500 transition">
+            <div className="rounded-3xl bg-white/[0.03] p-8 border border-white/10 hover:border-pink-500/40 hover:bg-white/[0.05] transition-colors duration-300">
 
-              <FaQrcode className="text-5xl text-pink-500 mb-5" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-600/20 to-purple-600/20 border border-pink-500/20 flex items-center justify-center mb-6">
+                <FaQrcode className="text-2xl text-pink-400" />
+              </div>
 
               <h3 className="text-2xl font-bold">
                 QR Verification
@@ -100,9 +97,11 @@ const Home = () => {
 
             </div>
 
-            <div className="bg-white/5 rounded-3xl p-8 border border-white/10 hover:border-pink-500 transition">
+            <div className="rounded-3xl bg-white/[0.03] p-8 border border-white/10 hover:border-pink-500/40 hover:bg-white/[0.05] transition-colors duration-300">
 
-              <FaUserShield className="text-5xl text-pink-500 mb-5" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-600/20 to-purple-600/20 border border-pink-500/20 flex items-center justify-center mb-6">
+                <FaUserShield className="text-2xl text-pink-400" />
+              </div>
 
               <h3 className="text-2xl font-bold">
                 Secure Platform
@@ -122,7 +121,7 @@ const Home = () => {
 
       {/* HOW IT WORKS */}
 
-      <section className="bg-[#111] py-24">
+      <section className="bg-white/[0.02] border-y border-white/5 py-24">
 
         <h2 className="text-center text-4xl font-bold">
           How It Works
@@ -132,7 +131,7 @@ const Home = () => {
 
           <div className="text-center">
 
-            <div className="w-16 h-16 mx-auto rounded-full bg-pink-600 flex items-center justify-center text-2xl font-bold">
+            <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center text-2xl font-bold">
               1
             </div>
 
@@ -148,7 +147,7 @@ const Home = () => {
 
           <div className="text-center">
 
-            <div className="w-16 h-16 mx-auto rounded-full bg-pink-600 flex items-center justify-center text-2xl font-bold">
+            <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center text-2xl font-bold">
               2
             </div>
 
@@ -164,7 +163,7 @@ const Home = () => {
 
           <div className="text-center">
 
-            <div className="w-16 h-16 mx-auto rounded-full bg-pink-600 flex items-center justify-center text-2xl font-bold">
+            <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center text-2xl font-bold">
               3
             </div>
 
@@ -180,7 +179,7 @@ const Home = () => {
 
           <div className="text-center">
 
-            <div className="w-16 h-16 mx-auto rounded-full bg-pink-600 flex items-center justify-center text-2xl font-bold">
+            <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center text-2xl font-bold">
               4
             </div>
 
@@ -211,12 +210,9 @@ const Home = () => {
           just a few clicks.
         </p>
 
-        <Link
-          to="/events"
-          className="inline-block mt-10 bg-pink-600 hover:bg-pink-700 px-10 py-4 rounded-full font-semibold"
-        >
+        <a href="#events" className="inline-block mt-10 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 px-10 py-4 rounded-full font-semibold shadow-lg shadow-pink-600/20 transition-all duration-300">
           Explore Events
-        </Link>
+        </a>
 
       </section>
 

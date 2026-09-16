@@ -24,9 +24,6 @@ const EventCard = ({ event, onTicketBooked }) => {
     }
 
     try {
-
-      // console.log(user);
-      
       const ticketId = `TKT-${Date.now()}`;
 
       // Create Ticket
@@ -58,17 +55,17 @@ const EventCard = ({ event, onTicketBooked }) => {
     }
   };
 
+  const soldOut = event.ticketleft <= 0;
+
   return (
-    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/10 py-6">
-
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-
-        {/* Date */}
-        <div className="text-gray-400 text-sm w-28">
-          {event.date}
-        </div>
-
-        {/* Image */}
+    <div
+      className="group relative flex flex-col sm:flex-row sm:items-center gap-5
+                 rounded-3xl bg-white/[0.03] border border-white/10
+                 hover:border-pink-500/40 hover:bg-white/[0.05]
+                 transition-colors duration-300 p-4 sm:p-5"
+    >
+      {/* Image */}
+      <div className="relative flex-shrink-0 w-full sm:w-40 h-40 sm:h-28">
         <img
           src={
             event.image
@@ -76,46 +73,42 @@ const EventCard = ({ event, onTicketBooked }) => {
               : "/concert.jpg"
           }
           alt={event.title}
-          className="w-full sm:w-24 h-32 sm:h-24 object-cover rounded-lg"
+          className="w-full h-full object-cover rounded-2xl"
         />
-
-        {/* Event Details */}
-        <div>
-
-          <span className="inline-block bg-pink-600 text-white text-xs px-3 py-1 rounded-full mb-2">
-            🎟 {event.ticketleft} Tickets Left
-          </span>
-
-          <h2 className="text-2xl font-bold text-white h-16 line-clamp-2">
-            {event.title}
-            </h2>
-
-          <p className="text-gray-400 mt-1">
-            📍 {event.location}
-          </p>
-
-          <p className="text-gray-500 text-sm">
-            🕒 {event.time}
-          </p>
-
-        </div>
-
+        <span className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm text-pink-400 text-[11px] font-medium px-2.5 py-1 rounded-full border border-pink-500/30">
+          {event.ticketleft} left
+        </span>
       </div>
 
+      {/* Title */}
+      <div className="flex-1 min-w-0">
+        <h2 className="text-xl sm:text-2xl font-bold text-white leading-snug line-clamp-2">
+          {event.title}
+        </h2>
+        <p className="text-gray-400 mt-1 text-sm truncate">
+          {event.location}
+        </p>
+      </div>
+
+      {/* Date / time meta */}
+      <div className="flex sm:flex-col gap-x-3 gap-y-1 sm:items-end text-xs sm:text-sm text-gray-400 sm:w-40 shrink-0">
+        <span>{event.date}</span>
+        <span className="hidden sm:inline text-gray-600">•</span>
+        <span>{event.time}</span>
+      </div>
+
+      {/* CTA */}
       <button
         onClick={handleBookTicket}
-        disabled={event.ticketleft <= 0}
-        className={`px-6 py-3 rounded-lg font-semibold transition duration-300 ${
-          event.ticketleft <= 0
-            ? "bg-gray-600 cursor-not-allowed"
-            : "bg-pink-600 hover:bg-pink-700 shadow-lg shadow-pink-600/30"
-        } text-white`}
+        disabled={soldOut}
+        className={`shrink-0 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
+          soldOut
+            ? "bg-white/5 text-gray-500 cursor-not-allowed"
+            : "bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-500 hover:to-purple-500 shadow-lg shadow-pink-600/20"
+        }`}
       >
-        {event.ticketleft <= 0
-          ? "Sold Out"
-          : "Book Ticket"}
+        {soldOut ? "Sold Out" : "Buy Ticket →"}
       </button>
-
     </div>
   );
 };

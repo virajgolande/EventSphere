@@ -28,26 +28,29 @@ const Contact = () => {
         message: "",
       });
     } catch (error) {
-  console.error(error);
+      console.error(error);
 
-  alert(error?.message || JSON.stringify(error));
-} finally {
+      alert(error?.message || JSON.stringify(error));
+    } finally {
       setLoading(false);
     }
   };
+
+  const inputClasses =
+    "w-full bg-white/[0.03] border border-white/10 p-3 rounded-xl placeholder:text-gray-500 focus:outline-none focus:border-pink-500/40 transition";
 
   return (
     <div className="min-h-screen bg-black text-white py-20 px-6">
       <div className="max-w-6xl mx-auto">
 
-        <h1 className="text-5xl font-bold text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-center mb-16">
           Contact Us
         </h1>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-6">
 
           {/* Left Side */}
-          <div className="space-y-8">
+          <div className="rounded-3xl bg-white/[0.03] border border-white/10 p-8 space-y-8">
 
             <div>
               <h3 className="text-xl font-semibold mb-2">
@@ -97,7 +100,7 @@ const Contact = () => {
           {/* Right Side */}
           <form
             onSubmit={handleSubmit}
-            className="bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-xl"
+            className="rounded-3xl bg-white/[0.03] border border-white/10 p-8"
           >
 
             <div className="space-y-5">
@@ -113,7 +116,7 @@ const Contact = () => {
                     name: e.target.value,
                   })
                 }
-                className="w-full bg-black/40 p-3 rounded-lg"
+                className={inputClasses}
               />
 
               <input
@@ -127,7 +130,7 @@ const Contact = () => {
                     email: e.target.value,
                   })
                 }
-                className="w-full bg-black/40 p-3 rounded-lg"
+                className={inputClasses}
               />
 
               <input
@@ -140,7 +143,7 @@ const Contact = () => {
                     phone: e.target.value,
                   })
                 }
-                className="w-full bg-black/40 p-3 rounded-lg"
+                className={inputClasses}
               />
 
               <textarea
@@ -154,13 +157,13 @@ const Contact = () => {
                     message: e.target.value,
                   })
                 }
-                className="w-full bg-black/40 p-3 rounded-lg"
+                className={inputClasses}
               />
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-pink-600 hover:bg-pink-700 py-3 rounded-lg font-semibold"
+                className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 disabled:opacity-60 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg shadow-pink-600/20"
               >
                 {loading
                   ? "Sending..."
